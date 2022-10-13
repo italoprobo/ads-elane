@@ -61,3 +61,81 @@ void consultar(int mat){
     }
 }
 
+//estrat�gia 1: colocar o ultimo elemento da lista na posi��o do elemento removido
+void remover00(){
+	int mat,cont,achou,conrem,resp;
+	int i = -1;
+	do{
+		printf("\nRemover aluno\n\n");printf("\nMatricula: ");
+		scanf("%d", &mat);
+		achou=procura(mat);
+		if(achou != -1){
+			mostrar(achou);
+			printf("\nDeseja remover: 1-SIM 2-NAO: ");
+			scanf("%d",&resp);
+			if(resp == 1){
+
+				while(lista[i].mat != NULL){
+					i++;
+					printf("\n%d", i);
+				}
+
+				lista[achou] = lista[i];
+
+				printf("\nAluno removido");
+		} else {
+			printf("\nAluno nao foi removido");
+			break;
+		} 
+		} else {
+			printf("\nAluno nao encontrado");
+		}
+
+		printf("\nRemover outro aluno: 1-SIM, 2-NAO: ");
+		scanf("%d", &cont);
+	} while(cont == 1);
+}
+
+//estrat�gia 2: mover TODOS os elementos que est�o AP�S  o elemento que deve ser removido UMA POSI��O A FRENTE.
+void remover01(){
+	int mat,cont,achou,conrem,resp;
+	int i = -1;
+	do{
+		printf("\nRemover aluno\n\n");printf("\nMatricula: ");
+		scanf("%d", &mat);
+		achou=procura(mat);
+		if(achou != -1){
+			mostrar(achou);
+			printf("\nDeseja remover: 1-SIM 2-NAO: ");
+			scanf("%d",&resp);
+			if(resp == 1){
+
+				while (i < achou){
+					i++;
+				}
+
+				while(i < MAX-1){
+					lista[i].mat = lista[i + 1].mat;
+					lista[i].nome = lista[i + 1].nome;
+				}
+				
+
+				printf("\nAluno removido");
+		} else {
+			printf("\nAluno nao foi removido");
+			break;
+		} 
+		} else {
+			printf("\nAluno nao encontrado");
+		}
+
+		printf("\nRemover outro aluno: 1-SIM, 2-NAO: ");
+		scanf("%d", &cont);
+	} while(cont == 1);
+}
+
+main(){
+	aluno *al = new aluno();
+    
+	
+}
